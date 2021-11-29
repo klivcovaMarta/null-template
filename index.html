@@ -4,18 +4,46 @@
 <html lang="ru">
 	<!-- Заголовок страницы, контейнер для других важных данных (не отображается) -->
 	<head>
-		<!-- Заголовок страницы в браузере -->
-		<title>CSS. Часть №1 (Синтаксис + Обнуление)</title>
-		<!-- Подключаем CSS -->
-		<link rel="stylesheet" href="css/style.css" />
 		<!-- Кодировка страницы -->
-		<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+		<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Заголовок страницы в браузере -->
+		<title>Стартовый шаблон</title>
+		<!-- Подключаем CSS -->
+		<link rel="stylesheet" href="css/style.css">
+		
 	</head>
 	<!-- Отображаемое тело страницы -->
 	<body>
-		<div>
-			<p>Lorem <span>ipsum dolor sit amet</span>, consectetur adipisicing elit. Quae magni sapiente enim soluta! Numquam natus fuga accusantium, delectus necessitatibus fugit totam iure rerum mollitia aliquam quae! Dolores, harum, quae? Expedita.</p>
-			<p class="bigred">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae at optio, esse neque officia id voluptatum voluptatem eligendi dolores ratione sunt itaque necessitatibus cum, aut voluptate sapiente earum repellendus molestias! Illum dolores ducimus animi unde rem amet velit sed quasi earum quo perferendis porro atque saepe vero alias ipsa repudiandae facilis praesentium natus accusantium quisquam nemo iusto, deserunt est. Natus dolore quisquam quas magnam, voluptas quos repellendus sequi commodi harum perspiciatis, blanditiis eaque et dolorum in sint. Facilis, non quidem voluptatum natus ipsa laboriosam vel rem ullam beatae qui sint eveniet suscipit. Accusantium rem sit eligendi enim adipisci, mollitia dolores.</p>
+		<div class="wraper">
+			<header class="header">
+				<div class="header__container _container">
+					<a href="" class="header__logo"></a>
+					<nav class="header__menu menu">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="" class="menu__link"></a>
+							</li>
+							<li class="menu__item">
+								<a href="" class="menu__link"></a>
+							</li>
+							<li class="menu__item">
+								<a href="" class="menu__link"></a>
+							</li>
+							<li class="menu__item">
+								<a href="" class="menu__link"></a>
+							</li>
+						</ul>
+					</nav>
+					<div class="header__burger burger">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+			</header>
+			<main class="page"></main>
+			<footer  class="footer"></footer>
 		</div>
+	<script src="js/script.js"></script>
 	</body>
 </html>
