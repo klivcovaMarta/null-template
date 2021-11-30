@@ -1,5 +1,4 @@
-
-/*!Обнуление*/
+/*Обнуление*/
 *{
 	padding: 0;
 	margin: 0;
@@ -19,8 +18,9 @@ html,body{
 	height: 100%;
 	width: 100%;
 	font-size: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	letter-spacing: 1px;
 	line-height: 1;
-	font-size: 14px;
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
@@ -37,39 +37,172 @@ img{vertical-align: top;}
 
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 /*--------------------*/
-
-/*!===Оболочка для того, чтобы не было горизонтального скрола=====================================================================*/
+/*===Оболочка для того, чтобы не было горизонтального скрола=====================================================================*/
 .wrapper {
-	display: flex;
-	flex-direction: column;
 	min-height: 100%;
 	overflow: hidden; 	
 }
-.page {
-	flex: 1 1 auto;  	 /*контент прижимает футер к низу страницы*/
-}
-/*!=============ТЕХНИЧЕСКИЕ КЛАССЫ===========================================================*/
+/*=============ТЕХНИЧЕСКИЕ КЛАССЫ===========================================================*/
 ._container {
-	/* max-width: 1046px; */
+	max-width: 1180px;
 	margin: 0 auto;
-	padding: 0 15px;     /* отступ безопастности, чтобы не прилипал контент к краям*/
-	box-sizing: content-box;   /* чтобы padding  не входит в размер огр. контейнера*/
+	padding: 0 10px;        /* отступ безопастности, чтобы не прилипал контент к краям*/	
 }
 ._ibg {
-	position: relative;
+	position: relative;	
 }
-._ibg img {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-._button {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-}
+	._ibg img {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
 /*--------------------------------------------------------*/
+/* Шапка */
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+/* Плашка */
+.header:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;	
+	background-color: rgb(175, 29, 139);	
+}
+	.header__body {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: 80px; 
+	}
+		/* Логотип */
+		.header__logo {
+			position: relative;
+			z-index: 2;
+			flex: 0 0 60px;
+			height: 60px;
+			border-radius: 50%;
+			border: 3px solid rgb(121, 3, 97);
+			overflow: hidden;
+		}
+			.header__logo img {
+				display: block;   /* убирает подрезание картинки */
+			}
+		/* Бургер */
+		.header__burger {
+			display: none;
+		}
+		/* Навигационное меню */
+		.header__menu {			
+		}
+			.menu__list {
+				display: flex;
+				align-items: center;
+			}
+			.menu__item {
+				padding: 0 0 0 20px;
+			}
+			.menu__link {
+				text-transform: uppercase;
+				color: #fff;
+			}
+/* Контент */
+.page {
+	margin-top: 80px;
+}
+	.page__container {
+		padding: 30px 15px;
+	}
+	.page__container > *:not(:last-child) {
+	margin: 0px 0px 15px 0px;
+	}
+
+/*=============Для мобильных устройств (до 767px)=====================*/
+@media (max-width: 767px) {     	
+	body.lock {
+		overflow: hidden;	/* 8. Запрещаем скрол тела body при открытом меню-бургере*/
+	}
+		/* Выносим плашку на первый план, а поверх накладываем бургер */
+		.header:before {			
+			content: '';
+			z-index: 1;   	
+		}
+			/* Уменьшаем шапку и логотип для мобилак */
+			.header__body {
+				height: 50px;  
+			}
+				.header__logo {
+					flex: 0 0 40px;
+					height: 40px;
+				}
+				/* Рисуем сам бургер (графически)*/
+				.header__burger {					
+					position: relative;
+					z-index: 2;
+					display: block;
+					width: 30px;
+					height: 20px;
+					cursor: pointer;
+				}
+					.header__burger span,
+					.header__burger:after,
+					.header__burger:before {
+						content: '';
+						background-color: #fff;
+						position: absolute;
+						left: 0;
+						width: 100%;
+						height: 2px;	
+						transition: all 0.3s ease 0s; 	/* Добавляем анимацию бургеру*/
+					}	
+					.header__burger:before { top: 0; height: 2px;}
+					.header__burger span { top: 9px;}
+					.header__burger:after {	bottom: 0;}	
+
+					.header__burger.active:before {    	/* После подключения JQuery и написания функции, которая добавляет */
+						transform: rotate(45deg);		/*    класс active к бургеру и пунктам меню, делаем из бургера крестик*/
+						top: 9px;	}
+					.header__burger.active span {
+						transform: scale(0);	
+					}	
+					.header__burger.active:after {
+						transform: rotate(-45deg);
+						bottom: 9px;
+					}
+				/* Делаем пункты меню на весь экран на мобилке + скрываем изначально меню*/
+				.header__menu {		
+					position: fixed;	
+					top: -100%;		
+					left: 0;
+					width: 100%;  
+					height: 100%;
+					background-color: rgb(206, 182, 105);	
+					padding: 90px 0 0 0;		
+					transition: all 0.3s ease 0s;	
+					overflow: auto;		/* Добавляем скрол на случай если не будет видно пунктов меню */
+				}	
+				.header__menu.active {	
+					top: 0;		/* Показываем меню при клике (активном классе active) */
+				}				
+					.menu__list {	/* Оформляем пункты меню */
+						display: block;    	
+					}
+					.menu__item {
+						padding: 0 0 30px 0;
+						text-align: center;
+						font-weight: bold;
+						font-size: 24px;
+					}
+			.page {
+				margin-top: 50px;
+			}	}
+/*------------------------------------------------------*/
