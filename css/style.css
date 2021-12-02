@@ -205,8 +205,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 			display: none;
 		}
 		/* Навигационное меню */
-		.header__menu {			
-		}
+	
 			.menu__list {
 				display: flex;
 				align-items: center;
@@ -309,4 +308,3 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 				margin-top: 50px;
 			}	}
 /*------------------------------------------------------*/
->>>>>>> a5c8c5741e124d8fa81045af6db9f339b26b3b08
